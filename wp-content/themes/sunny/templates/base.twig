@@ -8,19 +8,30 @@
 
 	<body class="{{body_class}}" data-template="base.twig">
 		<div class="header container">
-			<header >
-				{% block header %}
-					<div class="wrapper">
-						<h1 class="hdr-logo" role="banner">
-							<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name | e}}</a>
-						</h1>
-						<h2>{{ site.description | e }}</h2>
-					</div>
-				{% endblock %}
-			</header>
+			<div class="row">
+				<div class="col-sm-12">
+					<header >
+						{% block header %}
+							<div class="wrapper">
+								<h1 class="hdr-logo" role="banner">
+									<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name | e}}</a>
+								</h1>
+								<h2>{{site.description | e}}</h2>
+							</div>
+						{% endblock %}
+					</header>
+				</div>
+			</div>
+		</div>
+		<div class="cover container">
+			<div class="row">
+				<div class="text-center col-sm-12">
+					<img src="{{ Image(carbon_get_theme_option('global_cover_image')).src('medium_16x9') }}"/>
+				</div>	
+			</div>		
 		</div>
 
-		<section id="content" role="main" class="content-wrapper">
+		<section id="content" role="main" class="content-wrapper container">
 			{% if title %}<h1>{{title}}</h1>{% endif %}
 			<div class="wrapper {{sidebar_class}}">
 				{% block content %}

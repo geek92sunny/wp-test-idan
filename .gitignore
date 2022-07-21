@@ -14,14 +14,6 @@
 #
 # To stop tracking a file that is currently tracked, use 
 # git rm --cached
-#
-# Change Log:
-# 20180808 unignore site.webmanifest
-# 20180714 unignore .phpcs.xml.dist
-# 20160309 Added favicon files as whitelisted files
-# 20150302 Added composer.json as a whitelisted file
-# 20150227 Created as fork of https://gist.github.com/salcode/9940509,
-#   this version ignores all files by default
 # -----------------------------------------------------------------
 
 # ignore everything in the root except the "wp-content" directory.

@@ -11,4 +11,10 @@
 			</section>
 		</article>
 	</div><!-- /content-wrapper -->
+
+	<div class="container">
+		{% for post in all_posts %}
+			{% include 'partial/post/post.twig' %}
+		{% endfor %}
+	</div>	
 {% endblock %}
