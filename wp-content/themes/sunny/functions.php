@@ -14,7 +14,9 @@
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
 if ( file_exists( $composer_autoload ) ) {
 	require_once $composer_autoload;
+
 	$timber = new Timber\Timber();
+	\Carbon_Fields\Carbon_Fields::boot();
 }
 
 /**
@@ -40,10 +42,12 @@ if ( ! class_exists( 'Timber' ) ) {
 }
 
 /* Twig will look for templates in these directories */
-Timber::$dirname = array( 'templates', 'views' );
+Timber::$dirname = array( 'templates' );
 
 /* Means, remember to escape */
 Timber::$autoescape = false;
 
 
-include './theme.php';
+include __DIR__ . '/theme.php';
+
+include __DIR__ . '/custom_fields.php';

@@ -1,0 +1,11 @@
+{
+  "name": "Sunny",
+  "version": "1.0.0",
+  "description": "Test theme by Sunny",
+  "main": "index.php",
+  "author": "Sunny",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}
