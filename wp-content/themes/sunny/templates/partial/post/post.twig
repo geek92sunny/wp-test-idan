@@ -1,8 +1,11 @@
 <div class="post-item">
-	<div class="thumb"></div>
+	<div class="thumb">
+		{# default_post_thumb is from global context #}
+		<img src="{{post.thumbnail.src | default(default_post_thumb) | resize(200)}}">
+	</div>
 	<div class="txt">
-		<div class="title"></div>
-		<div class="excerpt"></div>
-		<a class="btn btn-default">View</a>
+		<div class="title">{{post.title | e}}</div>
+		<div class="excerpt">{{post.post_excerpt | e}}</div>
+		<a href="{{post.link}}" class="btn btn-primary">View</a>
 	</div>
 </div>

@@ -2,4 +2,17 @@
 
 .footer{
 	border-top: 1px solid #c6c5c5;
+	clear: both;
+}
+.post-wrp, .load-more-sec{
+	margin: 20px 0px;
+	float: left;
+}
+.post-item{
+	width: 33.33%;
+	float: left;
+}
+.post-item .thumb img{
+	width: 200px;
+	height: 200px;
 }

@@ -51,3 +51,5 @@ Timber::$autoescape = false;
 include __DIR__ . '/theme.php';
 
 include __DIR__ . '/custom_fields.php';
+
+include __DIR__ . '/ajax.php';

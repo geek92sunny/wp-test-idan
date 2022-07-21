@@ -1,5 +1,7 @@
 <?php
 
+namespace Sunny; // name of the theme, not mine :)
+
 /**
  * Bootstrap file of the theme
  * Loads the basic settings and assets
@@ -11,11 +13,10 @@
  * @since Sunny 1.0
  */
 
-namespace Sunny; // name of the theme, not mine :)
 
 class Theme extends \Timber\Site {
 
-    protected $script_ver = '1.0';
+    protected $script_ver = '1.6';
     protected $theme_name = 'sunny';
 
     /** Add timber support. */
@@ -55,6 +56,7 @@ class Theme extends \Timber\Site {
     public function add_to_context( $context ) {
         // $context['menu']  = new \Timber\Menu();
         $context['site']  = $this;
+        $context['default_post_thumb'] = $this->theme->link . '/images/placeholder.jpg';
 
         return $context;
     }
@@ -78,7 +80,7 @@ class Theme extends \Timber\Site {
 
     protected function css(){
         $theme_url = get_template_directory_uri();
-        
+
         wp_enqueue_style(
             "{$this->theme_name}-bootstrap",
             "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
@@ -96,7 +98,15 @@ class Theme extends \Timber\Site {
     protected function js(){
         $theme_url = get_template_directory_uri();
 
-        wp_enqueue_script( "{$this->theme_name}-main", "{$theme_url}/assets/js/main.js", array('jquery'), $this->script_ver, true );
+        wp_register_script( "{$this->theme_name}-main", "{$theme_url}/assets/js/main.js", array('jquery'), $this->script_ver, true );
+
+        $theme_vars = [
+            'ajax_endpoint' => admin_url( 'admin-ajax.php' ),
+        ];
+
+        wp_localize_script( "{$this->theme_name}-main", 'theme_vars', $theme_vars );
+
+        wp_enqueue_script( "{$this->theme_name}-main" );
     }
 
 }
