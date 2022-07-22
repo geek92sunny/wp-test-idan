@@ -16,7 +16,7 @@ namespace Sunny; // name of the theme, not mine :)
 
 class Theme extends \Timber\Site {
 
-    protected $script_ver = '1.8';
+    protected $script_ver = '1.9';
     protected $theme_name = 'sunny';
 
     /** Add timber support. */

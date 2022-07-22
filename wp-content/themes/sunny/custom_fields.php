@@ -65,6 +65,11 @@ class Custom_Fields {
        Container::make( 'theme_options', __( 'Theme Options' ) )
             ->add_fields( array(
                 Field::make( 'image', 'global_cover_image', 'Blog Cover' ),
+                Field::make( 'complex', 'footer_quotes', 'Footer Quotes' )
+                ->set_layout( 'tabbed-horizontal' )
+                ->add_fields( array(
+                    Field::make( 'text', 'quote', 'Quote' ),
+                ) ),
             ) );        
     }
 

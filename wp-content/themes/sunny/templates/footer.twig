@@ -1,7 +1,19 @@
 <div class="container footer">
 	<div class="row">
-		<div class="col-sm-12 text-center">
+		<div class="col-sm-12 text-center quote">
+			{% if( carbon_get_theme_option('footer_quotes') ) %}
+				<p>{{ random(carbon_get_theme_option('footer_quotes'))['quote'] }}</p>
+			{% endif %}			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 float-left">
 		Copyright {{"now"|date('Y')}}
+		<span class="float-end">
+			{% if fn('is_singular') %}
+				<a href="{{site.url}}">{{_e('<< Back to Home')}}</a>
+			{% endif %}			
+		</span>
 		</div>
 	</div>
 </div>
