@@ -1,3 +1,7 @@
-{% for post in posts %}
-	{% include 'partial/post/post.twig' %}
+{% for post_chunk in posts %}
+	<div class="row">
+	{% for post in post_chunk %}
+		{% include 'partial/post/post.twig' %}
+	{% endfor %}
+	</div>
 {% endfor %}

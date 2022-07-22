@@ -74,7 +74,7 @@ class Ajax {
                             'order'             => 'DESC',
                             'offset'            => $offset,
                         ]);
-
+        $context['posts'] = array_chunk($context['posts'], 3);
 
         $posts_html = \Timber::compile( array('post_grid.twig') , $context);
 

@@ -20,5 +20,6 @@ $context['recent_posts'] = Timber::get_posts([
 							'orderby'			=> 'date',
 							'order'				=> 'DESC'	
 						]);
+$context['recent_posts'] = array_chunk($context['recent_posts'], 3);
 
 Timber::render( array( 'home.twig', 'page.twig' ), $context );
