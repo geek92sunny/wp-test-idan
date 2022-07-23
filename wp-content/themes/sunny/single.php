@@ -1,9 +1,7 @@
 <?php
 /**
  * General template to load details pages
- * 
- * https://github.com/geek92sunny/wp-test-idan
- * 
+ *
  * @package  WordPress
  * @subpackage  Sunny
  * @author:  Sunny <sunny92geek@gmail.com>

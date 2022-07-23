@@ -6,7 +6,6 @@
  * It is used to display a page when nothing more specific matches a query.
  * E.g., it puts together the home page when no home.php file exists
  *
- *
  * @package  WordPress
  * @subpackage  Sunny
  * @author:  Sunny <sunny92geek@gmail.com>

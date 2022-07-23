@@ -1,14 +1,12 @@
 <?php
-
 /**
  * Test Theme by Sunny.
- * 
- * https://github.com/geek92sunny/wp-test-idan
- * 
+ *
  * @package  WordPress
  * @subpackage  Sunny
  * @author:  Sunny <sunny92geek@gmail.com>
  * @since Sunny 1.0
+ * @link https://github.com/geek92sunny/wp-test-idan
  */
 
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
@@ -48,8 +46,8 @@ Timber::$dirname = array( 'templates' );
 Timber::$autoescape = false;
 
 
-include __DIR__ . '/theme.php';
+include __DIR__ . '/includes/class-theme.php';
 
-include __DIR__ . '/custom_fields.php';
+include __DIR__ . '/includes/class-custom-fields.php';
 
-include __DIR__ . '/ajax.php';
+include __DIR__ . '/includes/class-ajax.php';
