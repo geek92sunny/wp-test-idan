@@ -22,7 +22,7 @@ class Theme extends \Timber\Site {
 	 *
 	 * @var string version number
 	 */
-	protected $script_ver   = '1.9';
+	protected $script_ver   = '1.12';
 
 	/**
 	 * Name of this theme

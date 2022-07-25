@@ -73,26 +73,35 @@ class Ajax {
 	 */
 	public function load_posts() {
 		$offset  = isset( $_GET['offset'] ) ? sanitize_text_field( $_GET['offset'] ) : 0;
+		$page_size = 3;
 
 		$context = \Timber::context();
 		$context['posts'] = \Timber::get_posts(
 			array(
 				'post_type'         => 'post',
-				'posts_per_page'    => 3,
+				'posts_per_page'    => $page_size,
 				'orderby'           => 'date',
 				'order'             => 'DESC',
 				'offset'            => $offset,
 			)
 		);
+		$next_posts = \Timber::get_posts(
+			array(
+				'post_type'         => 'post',
+				'posts_per_page'    => $page_size,
+				'offset'            => $offset + $page_size,
+			)
+		);
+
 		$context['posts'] = array_chunk( $context['posts'], 3 );
 
 		$posts_html = \Timber::compile( array( 'post_grid.twig' ), $context );
 
 		$response  = array(
-			'success'   => 1,
-			'message'   => 'Posts fetched',
-			'posts'     => $posts_html,
-			'count'     => count( $context['posts'] ),
+			'success'               => 1,
+			'message'               => 'Posts fetched',
+			'posts'                 => $posts_html,
+			'nextPostsCount'        => count( $next_posts ),
 		);
 
 		wp_send_json( $response, 200 );

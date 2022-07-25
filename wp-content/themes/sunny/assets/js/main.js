@@ -15,7 +15,7 @@
           if ( res.success ) {
             $('.post-wrp .posts').append(res.posts);
 
-            if (res.count == 0){
+            if (res.nextPostsCount == 0){
               $(".load-more").hide();
             }
 
