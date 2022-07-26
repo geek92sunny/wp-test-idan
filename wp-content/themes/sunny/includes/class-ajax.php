@@ -76,7 +76,7 @@ class Ajax {
 		$offset  = isset( $_GET['offset'] ) ? sanitize_text_field( $_GET['offset'] ) : 0;
 		$page_size = 3;
 
-		$posts = \Timber::get_posts(
+		$context['posts'] = \Timber\PostQuery(
 			array(
 				'post_type'         => 'post',
 				'posts_per_page'    => $page_size,
@@ -86,13 +86,11 @@ class Ajax {
 			)
 		);
 
-		$context['posts'] = array_chunk( $posts, $page_size );
-
 		$response  = array(
 			'success'               => 1,
 			'message'               => 'Posts fetched',
 			'posts'                 => \Timber::compile( array( 'post_grid.twig' ), $context ),
-			'nextPostsCount'        => count( $context['posts'] ),
+			'nextPostsCount'        => $context['posts']->found_posts,
 		);
 
 		wp_send_json( $response, 200 );
