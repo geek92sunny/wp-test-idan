@@ -15,7 +15,7 @@
           if ( res.success ) {
             $('.post-wrp .posts').append(res.posts);
 
-            if (res.nextPostsCount == 0){
+            if (res.lastOffset == soniTheme.postOffset){
               $(".load-more").hide();
             }
 
