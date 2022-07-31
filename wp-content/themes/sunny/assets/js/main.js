@@ -13,7 +13,6 @@
         dataType: 'json',
 
         success: function(res){
-          console.log(res.posts_remain, soniTheme.postOffset);
           if ( res.success ) {
             $('.post-wrp .posts').append(res.posts);
 
