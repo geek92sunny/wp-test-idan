@@ -2,8 +2,8 @@
   
   $(function(){
 
-    let soniTheme = {
-      postOffset: 3
+    const soniTheme = {
+      postOffset: 0
     }
 
     $(".load-more").click(function(){
@@ -11,19 +11,22 @@
         url: theme_vars.ajax_endpoint,
         data: {action:'load_posts', offset: soniTheme.postOffset},
         dataType: 'json',
+
         success: function(res){
+          console.log(res.posts_remain, soniTheme.postOffset);
           if ( res.success ) {
             $('.post-wrp .posts').append(res.posts);
 
-            if (res.nextPostsCount == 0){
+            if (res.posts_remain <= soniTheme.postOffset) {
               $(".load-more").hide();
             }
 
-            soniTheme.postOffset += 3;
+            soniTheme.postOffset = res.offset;
           } else {
             alert( res.message )
           }
         },
+        
         error: function(){
           alert('Sorry, an error occurred!')
         }
