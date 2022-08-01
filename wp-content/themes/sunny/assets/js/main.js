@@ -3,7 +3,7 @@
   $(function(){
 
     let soniTheme = {
-      postOffset: 3
+      postOffset: parseInt(theme_vars.native_posts_per_page)
     }
 
     $(".load-more").click(function(){
@@ -15,11 +15,11 @@
           if ( res.success ) {
             $('.post-wrp .posts').append(res.posts);
 
-            if (res.lastOffset == soniTheme.postOffset){
+            if ( soniTheme.postOffset == res.lastOffset ){
               $(".load-more").hide();
             }
 
-            soniTheme.postOffset += 3;
+            soniTheme.postOffset += parseInt(theme_vars.native_posts_per_page);
           } else {
             alert( res.message )
           }

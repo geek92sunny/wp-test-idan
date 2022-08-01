@@ -131,6 +131,7 @@ class Theme extends \Timber\Site {
 
 		$theme_vars = array(
 			'ajax_endpoint' => admin_url( 'admin-ajax.php' ),
+			'native_posts_per_page'	=> NATIVE_POSTS_PER_PAGE,
 		);
 
 		wp_localize_script( "{$this->theme_name}-main", 'theme_vars', $theme_vars );

@@ -16,11 +16,11 @@ $context['post'] = $timber_post;
 $context['recent_posts'] = Timber::get_posts(
 	array(
 		'post_type'         => 'post',
-		'posts_per_page'    => 3,
+		'posts_per_page'    => NATIVE_POSTS_PER_PAGE,
 		'orderby'           => 'date',
 		'order'             => 'DESC',
 	)
 );
-// $context['recent_posts'] = array_chunk( $context['recent_posts'], 3 );
+$context['recent_posts'] = array_chunk( $context['recent_posts'], 3 );
 
 Timber::render( array( 'home.twig', 'page.twig' ), $context );

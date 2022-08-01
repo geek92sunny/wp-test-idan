@@ -73,7 +73,7 @@ class Ajax {
 	 */
 	public function load_posts() {
 		$offset  = isset( $_GET['offset'] ) ? sanitize_text_field( $_GET['offset'] ) : 0;
-		$page_size = 3;
+		$page_size = NATIVE_POSTS_PER_PAGE;
 
 		$context = \Timber::context();
 		$context['posts'] = new \Timber\PostQuery(
@@ -86,14 +86,16 @@ class Ajax {
 			)
 		);
 
+		$found_posts = $context['posts']->found_posts;
+		$context['posts'] = array_chunk( (array) $context['posts'], 3 );
+
 		$posts_html = \Timber::compile( array( 'post_grid.twig' ), $context );
 
 		$response  = array(
 			'success'               => 1,
 			'message'               => 'Posts fetched',
 			'posts'                 => $posts_html,
-			'nextPostsCount'        => count( $next_posts ),
-			'lastOffset'			=> floor($context['posts']->found_posts/$page_size)*$page_size,
+			'lastOffset'			=> floor($found_posts/$page_size)*$page_size,
 		);
 
 		wp_send_json( $response, 200 );

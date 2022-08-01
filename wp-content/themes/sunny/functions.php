@@ -9,6 +9,10 @@
  * @link https://github.com/geek92sunny/wp-test-idan
  */
 
+// keep it in multples of 3, as three items are
+// displayed in each row
+define('NATIVE_POSTS_PER_PAGE', 9);
+
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
 if ( file_exists( $composer_autoload ) ) {
 	require_once $composer_autoload;
